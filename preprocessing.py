@@ -34,7 +34,7 @@ def review_preprocess(dataset):
     all_stopwords.remove('not')
 
     corpus = []
-    for i in range(0, 100):
+    for i in range(0, 900):
         corpus.append(clean_review(dataset['Review'][i], all_stopwords))
     return corpus
 

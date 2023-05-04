@@ -8,7 +8,7 @@ from preprocessing import load_dataset
 
 def dividing_train_test(X, y):
     # Dividing dataset into training and test set
-    return  train_test_split(X, y, test_size=0.20, random_state=0)
+    return train_test_split(X, y, test_size=0.20, random_state=0)
 
 
 def training(X_train, y_train):
