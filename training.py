@@ -36,8 +36,8 @@ def compute_accuracy_and_conf_matrix(classifier, X_test, y_test):
 
 
 def main():
-    dataset = load_dataset()
-    X = load('preprocessed_data.joblib')
+    dataset = load_dataset('a2_RestaurantReviews_FreshDump.tsv')
+    X = load('preprocessed_data_training.joblib')
     y = dataset.iloc[:, -1].values
 
     X_train, X_test, y_train, y_test = dividing_train_test(X, y)

@@ -1,12 +1,12 @@
 import pickle
 import joblib
 from joblib import load
-from preprocessing import load_dataset
+from preprocessing import load_dataset, whole_preprocess
 
 
 def predict_fresh_X(classifier):
-    dataset = load_dataset()
-    X_fresh = load('preprocessed_data.joblib')
+    dataset = load_dataset('a2_RestaurantReviews_FreshDump.tsv')
+    _, X_fresh = whole_preprocess('a2_RestaurantReviews_FreshDump.tsv')
 
     y_pred = classifier.predict(X_fresh)
     print(y_pred)
