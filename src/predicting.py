@@ -1,15 +1,14 @@
 import pickle
 import joblib
-from joblib import load
-from preprocessing import load_dataset, whole_preprocess
+from preprocessing import load_dataset, review_preprocess
 
 
-def predict_fresh_X(classifier):
-    dataset = load_dataset('a2_RestaurantReviews_FreshDump.tsv')
-    _, X_fresh = whole_preprocess('a2_RestaurantReviews_FreshDump.tsv')
+def predict_fresh_X(classifier, cv):
+    number_lines, dataset = load_dataset('a2_RestaurantReviews_FreshDump.tsv')
+    corpus = review_preprocess(dataset, number_lines)
 
+    X_fresh = cv.transform(corpus).toarray()
     y_pred = classifier.predict(X_fresh)
-    print(y_pred)
 
     dataset['predicted_label'] = y_pred.tolist()
 
@@ -39,7 +38,7 @@ def main():
     predict_single(classifier, review, cv)
 
     # Predicting whole dataset
-    predict_fresh_X(classifier)
+    predict_fresh_X(classifier, cv)
 
 
 if __name__ == "__main__":
