@@ -47,12 +47,12 @@ def transformation(file_name):
     X = cv.fit_transform(corpus).toarray()
 
     # Saving BoW dictionary to later use in prediction
-    bow_path = 'c1_BoW_Sentiment_Model.pkl'
+    bow_path = 'assets/c1_BoW_Sentiment_Model.pkl'
     pickle.dump(cv, open(bow_path, "wb"))
 
     # Saved preprocess data
-    dump(X, 'preprocessed_data_training.joblib')
+    dump(X, 'assets/preprocessed_data_training.joblib')
 
 
 if __name__ == "__main__":
-    transformation('a1_RestaurantReviews_HistoricDump.tsv')
+    transformation('assets/a1_RestaurantReviews_HistoricDump.tsv')
