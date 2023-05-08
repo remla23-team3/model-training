@@ -17,7 +17,7 @@ def training(X_train, y_train):
     classifier.fit(X_train, y_train)
 
     # Exporting NB Classifier to later use in prediction
-    joblib.dump(classifier, 'assets/c2_Classifier_Sentiment_Model')
+    joblib.dump(classifier, 'c2_Classifier_Sentiment_Model')
 
     return classifier
 
@@ -37,7 +37,7 @@ def compute_accuracy_and_conf_matrix(classifier, X_test, y_test):
 
 def main():
     _, dataset = load_dataset('assets/a1_RestaurantReviews_HistoricDump.tsv')
-    X = load('assets/preprocessed_data_training.joblib')
+    X = load('preprocessed_data_training.joblib')
     y = dataset.iloc[:, -1].values
 
     X_train, X_test, y_train, y_test = dividing_train_test(X, y)

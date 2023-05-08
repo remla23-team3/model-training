@@ -27,7 +27,7 @@ def predict_single(classifier, review, cv) -> float:
     return prediction
 
 
-def predict_single_review(review: str) -> float:
+def predict_singlreview(review: str) -> float:
     cvFile = 'c1_BoW_Sentiment_Model.pkl'
     cv = pickle.load(open(cvFile, "rb"))
 
@@ -37,11 +37,11 @@ def predict_single_review(review: str) -> float:
 
 
 def main():
-    cvFile = 'assets/c1_BoW_Sentiment_Model.pkl'
+    cvFile = 'c1_BoW_Sentiment_Model.pkl'
     cv = pickle.load(open(cvFile, "rb"))
 
     # Predictions (via sentiment classifier)
-    classifier = joblib.load('assets/c2_Classifier_Sentiment_Model')
+    classifier = joblib.load('c2_Classifier_Sentiment_Model')
 
     # Predicting single inputs
     review = input("Give me an input to perform a sentiment analysis.\n>")
