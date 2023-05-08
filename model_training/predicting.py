@@ -1,6 +1,7 @@
 import pickle
 import joblib
-from preprocessing import load_dataset, review_preprocess
+from model_training.preprocessing import load_dataset, review_preprocess
+# from model_training import 'c1_Bow_Sentiment_Model.pkl'
 
 
 def predict_fresh_X(classifier, cv):
