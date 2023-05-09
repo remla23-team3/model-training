@@ -30,12 +30,12 @@ def predict_single(classifier, review, cv) -> int:
     return prediction
 
 
-def predict_single_review(review: str) -> int:
+def predict_single_review(review: str) -> str:
     cv = pickle.load(open(cvFile, "rb"))
 
     # Predictions (via sentiment classifier)
     classifier = joblib.load(resources_dir_class)
-    return predict_single(classifier, review, cv)
+    return json.dumps(int(predict_single(classifier, review, cv)))
 
 
 def main():
