@@ -1,5 +1,6 @@
 import pickle
 import joblib
+import json
 from model_training.preprocessing import load_dataset, review_preprocess
 from os import path
 
@@ -29,7 +30,7 @@ def predict_single(classifier, review, cv) -> int:
     return prediction
 
 
-def predict_single_review(review: str) -> int:
+def predict_single_review(review: str) -> str:
     # cvFile = path.join(path.dirname(__file__), 'c1_BoW_Sentiment_Model.pkl')
     # resources_dir_class = path.join(path.dirname(__file__), 'c2_Classifier_Sentiment_Model')
     # cvFile = 'c1_BoW_Sentiment_Model.pkl'
@@ -37,7 +38,7 @@ def predict_single_review(review: str) -> int:
 
     # Predictions (via sentiment classifier)
     classifier = joblib.load(resources_dir_class)
-    return predict_single(classifier, review, cv)
+    return json.dumps(int(predict_single(classifier, review, cv)))
 
 
 def main():
