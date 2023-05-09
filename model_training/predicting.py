@@ -17,7 +17,7 @@ def predict_fresh_X(classifier, cv):
     dataset.to_csv("assets/c3_Predicted_Sentiments_Fresh_Dump.tsv", sep='\t', encoding='UTF-8', index=False)
 
 
-def predict_single(classifier, review, cv) -> float:
+def predict_single(classifier, review, cv) -> int:
     processed_input = cv.transform([review]).toarray()[0]
     prediction = classifier.predict([processed_input])[0]
 
@@ -29,7 +29,7 @@ def predict_single(classifier, review, cv) -> float:
     return prediction
 
 
-def predict_single_review(review: str) -> float:
+def predict_single_review(review: str) -> int:
     # cvFile = path.join(path.dirname(__file__), 'c1_BoW_Sentiment_Model.pkl')
     # resources_dir_class = path.join(path.dirname(__file__), 'c2_Classifier_Sentiment_Model')
     # cvFile = 'c1_BoW_Sentiment_Model.pkl'
