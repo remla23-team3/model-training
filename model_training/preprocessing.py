@@ -3,6 +3,7 @@ import re
 import nltk
 import pickle
 import pandas as pd
+from os import path
 from joblib import dump
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
@@ -47,7 +48,8 @@ def transformation(file_name):
     X = cv.fit_transform(corpus).toarray()
 
     # Saving BoW dictionary to later use in prediction
-    bow_path = 'c1_BoW_Sentiment_Model.pkl'
+    bow_path = path.join(path.dirname(__file__), 'c1_BoW_Sentiment_Model.pkl')
+    # bow_path = 'c1_BoW_Sentiment_Model.pkl'
     pickle.dump(cv, open(bow_path, "wb"))
 
     # Saved preprocess data

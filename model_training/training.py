@@ -1,5 +1,6 @@
 import joblib
 from joblib import load
+from os import path
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import confusion_matrix, accuracy_score
@@ -17,7 +18,8 @@ def training(X_train, y_train):
     classifier.fit(X_train, y_train)
 
     # Exporting NB Classifier to later use in prediction
-    joblib.dump(classifier, 'c2_Classifier_Sentiment_Model')
+    resources_dir_classifier = path.join(path.dirname(__file__), 'c2_Classifier_Sentiment_Model')
+    joblib.dump(classifier, resources_dir_classifier)
 
     return classifier
 
