@@ -3,3 +3,5 @@ stages:
     cmd: python3 model_training/preprocessing.py
     deps:
     - model_training/preprocessing.py
+    outs:
+    - model_training/c1_BoW_Sentiment_Model.pkl

@@ -1,0 +1,12 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python3 model_training/preprocessing.py
+    deps:
+    - path: model_training/preprocessing.py
+      md5: c7d2a5fc6f1e03968c7d2751899df69f
+      size: 1654
+    outs:
+    - path: model_training/c1_BoW_Sentiment_Model.pkl
+      md5: 828af5ae0f67e120c4553ff3cdd9519e
+      size: 39825
