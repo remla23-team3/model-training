@@ -1,0 +1,5 @@
+stages:
+  preprocess:
+    cmd: python3 model_training/preprocessing.py
+    deps:
+    - model_training/preprocessing.py
