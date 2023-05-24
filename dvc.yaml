@@ -5,3 +5,9 @@ stages:
     - model_training/preprocessing.py
     outs:
     - model_training/c1_BoW_Sentiment_Model.pkl
+  train:
+    cmd: python3 model_training/training.py
+    deps:
+    - model_training/training.py
+    outs:
+    - model_training/c2_Classifier_Sentiment_Model

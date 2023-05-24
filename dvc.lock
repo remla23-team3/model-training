@@ -10,3 +10,13 @@ stages:
     - path: model_training/c1_BoW_Sentiment_Model.pkl
       md5: 828af5ae0f67e120c4553ff3cdd9519e
       size: 39825
+  train:
+    cmd: python3 model_training/training.py
+    deps:
+    - path: model_training/training.py
+      md5: 1b2a7da7529f53df367ce0df91ad6489
+      size: 1440
+    outs:
+    - path: model_training/c2_Classifier_Sentiment_Model
+      md5: 06d96fada0b2658cf88c08ace33ad144
+      size: 46215
