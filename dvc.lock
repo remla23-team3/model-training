@@ -1,22 +1,22 @@
 schema: '2.0'
 stages:
   preprocess:
-    cmd: python3 model_training/preprocessing.py
+    cmd: python3 src/preprocess.py
     deps:
-    - path: model_training/preprocessing.py
-      md5: c7d2a5fc6f1e03968c7d2751899df69f
-      size: 1654
+    - path: src/preprocess.py
+      md5: 483b6412fff8bbb07ca22e87616e06ae
+      size: 138
     outs:
-    - path: model_training/c1_BoW_Sentiment_Model.pkl
-      md5: 828af5ae0f67e120c4553ff3cdd9519e
-      size: 39825
+    - path: data/processed/c1_BoW_Sentiment_Model.pkl
+      md5: 46cd4a07c7014831c1b5003af28c7cac
+      size: 39826
   train:
-    cmd: python3 model_training/training.py
+    cmd: python3 src/train.py
     deps:
-    - path: model_training/training.py
-      md5: 1b2a7da7529f53df367ce0df91ad6489
-      size: 1440
+    - path: src/train.py
+      md5: 96e64a4bbe9d6446a7700bf351484f38
+      size: 77
     outs:
-    - path: model_training/c2_Classifier_Sentiment_Model
-      md5: 06d96fada0b2658cf88c08ace33ad144
+    - path: data/processed/c2_Classifier_Sentiment_Model
+      md5: b2afc4b7ac2b756223648e076cd3dba5
       size: 46215
