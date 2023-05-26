@@ -1,0 +1,4 @@
+[core]
+    remote = model-training-remote
+['remote "model-training-remote"']
+    url = gdrive://1PJYtpCMCPYEyrBhPkDDb751ATbIDoIPL
