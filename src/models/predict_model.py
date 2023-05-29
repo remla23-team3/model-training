@@ -1,5 +1,5 @@
-import joblib
 import pickle
+import joblib
 
 from data.preprocess import load_dataset, review_preprocess
 
@@ -15,7 +15,8 @@ def predict_dataset(classifier, cv):
 
     dataset['predicted_label'] = y_pred.tolist()
 
-    dataset.to_csv('data/processed/c3_Predicted_Sentiments_Fresh_Dump.tsv', sep='\t', encoding='UTF-8', index=False)
+    output_name = 'data/processed/c3_Predicted_Sentiments_Fresh_Dump.tsv'
+    dataset.to_csv(output_name, sep='\t', encoding='UTF-8', index=False)
 
 
 def predict_single(classifier, review, cv) -> int:
@@ -32,7 +33,9 @@ def predict_single(classifier, review, cv) -> int:
 
 
 def predict():
-    cv = pickle.load(open(cvFile, 'rb'))
+    with open(cvFile, 'rb') as f:
+        cv = pickle.load(f)
+
     classifier = joblib.load(resources_dir_class)
 
     review = input('Give me an input to perform a sentiment analysis.\n>')
