@@ -4,11 +4,11 @@ stages:
     cmd: python3 src/preprocess.py
     deps:
     - path: src/preprocess.py
-      md5: 483b6412fff8bbb07ca22e87616e06ae
-      size: 138
+      md5: 5122c773c00b02b34cde0d20a358f83d
+      size: 139
     outs:
     - path: data/processed/c1_BoW_Sentiment_Model.pkl
-      md5: 46cd4a07c7014831c1b5003af28c7cac
+      md5: af0bcc756ac64b11c5848df6fe05daa6
       size: 39826
   train:
     cmd: python3 src/train.py
@@ -18,5 +18,8 @@ stages:
       size: 77
     outs:
     - path: data/processed/c2_Classifier_Sentiment_Model
-      md5: b2afc4b7ac2b756223648e076cd3dba5
+      md5: dc7895aea5b7623a2f38a52db50a8ace
       size: 46215
+    - path: src/metrics/metrics.json
+      md5: cb57270e1358aa2598f99d779625b50f
+      size: 138

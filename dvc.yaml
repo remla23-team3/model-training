@@ -11,3 +11,6 @@ stages:
     - src/train.py
     outs:
     - data/processed/c2_Classifier_Sentiment_Model
+    metrics:
+    - src/metrics/metrics.json:
+        cache: false
