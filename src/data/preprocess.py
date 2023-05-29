@@ -1,6 +1,6 @@
 import re
-import nltk
 import pickle
+import nltk
 import pandas as pd
 from joblib import dump
 from nltk.corpus import stopwords
@@ -40,6 +40,7 @@ def preprocess_data(file_name):
     cv = CountVectorizer(max_features=1420)
     X = cv.fit_transform(corpus).toarray()
 
-    pickle.dump(cv, open('data/processed/c1_BoW_Sentiment_Model.pkl', "wb"))
+    with open('data/processed/c1_BoW_Sentiment_Model.pkl', 'wb') as f:
+        pickle.dump(cv, f)
 
     dump(X, 'data/processed/preprocessed_data_training.joblib')
