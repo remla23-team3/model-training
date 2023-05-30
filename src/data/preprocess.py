@@ -9,19 +9,30 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 def load_dataset(file_name):
+    """
+        Loads the dataset from file with the given file_name.
+    """
     dataset = pd.read_csv(file_name, delimiter='\t')
     return len(dataset), dataset
 
 def clean_review(review, all_stopwords):
-    ps = PorterStemmer()
+    """
+        Cleans up reviews by removing the stopwords.
+    """
+
+    porter_stemmer = PorterStemmer()
     review = re.sub('[^a-zA-Z]', ' ', review)
     review = review.lower().split()
-    review = [ps.stem(word) for word in review if not word in set(all_stopwords)]
+    review = [porter_stemmer.stem(word) for word in review if not word in set(all_stopwords)]
     review = ' '.join(review)
     return review
 
 
 def review_preprocess(dataset, number_lines):
+    """
+        Preprocesses the English reviews by removing the stopwords and negations. 
+    """
+
     nltk.download('stopwords')
 
     all_stopwords = stopwords.words('english')
@@ -34,13 +45,16 @@ def review_preprocess(dataset, number_lines):
 
 
 def preprocess_data(file_name):
+    """
+        Loads the dataset and preprocesses it.
+    """
     number_lines, dataset = load_dataset(file_name)
     corpus = review_preprocess(dataset, number_lines)
 
-    cv = CountVectorizer(max_features=1420)
-    X = cv.fit_transform(corpus).toarray()
+    count_vectorizer = CountVectorizer(max_features=1420)
+    X = count_vectorizer.fit_transform(corpus).toarray()
 
-    with open('data/processed/c1_BoW_Sentiment_Model.pkl', 'wb') as f:
-        pickle.dump(cv, f)
+    with open('data/processed/c1_BoW_Sentiment_Model.pkl', 'wb') as file:
+        pickle.dump(count_vectorizer, file)
 
     dump(X, 'data/processed/preprocessed_data_training.joblib')
