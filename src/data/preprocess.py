@@ -12,7 +12,8 @@ def load_dataset(file_name):
     """
         Loads the dataset from file with the given file_name.
     """
-    dataset = pd.read_csv(file_name, delimiter='\t')
+    dataset = pd.read_csv(file_name, delimiter='\t', dtype={'Review': str, 'Liked': int}) \
+        [['Review', 'Liked']]
     return len(dataset), dataset
 
 def clean_review(review, all_stopwords):
@@ -30,7 +31,7 @@ def clean_review(review, all_stopwords):
 
 def review_preprocess(dataset, number_lines):
     """
-        Preprocesses the English reviews by removing the stopwords and negations. 
+        Preprocesses the English reviews by removing the stopwords and negations.
     """
 
     nltk.download('stopwords')
