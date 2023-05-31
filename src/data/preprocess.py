@@ -30,7 +30,7 @@ def clean_review(review, all_stopwords):
 
 def review_preprocess(dataset, number_lines):
     """
-        Preprocesses the English reviews by removing the stopwords and negations. 
+        Preprocesses the English reviews by removing the stopwords and negations.
     """
 
     nltk.download('stopwords')
