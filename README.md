@@ -10,26 +10,21 @@ To make use of the model, preferably create a
 pip install -r requirements.txt
 ```
 
-<!-- 2. Preprocess the training data, train the model and predict the fresh data with:
-
-```bash
-python model_training/preprocessing.py
-python model_training/training.py
-python model_training/predicting.py
-``` -->
-
 ## 2. Running the pipelines
-2.1 To **download the required resources** run:
+### 2.1 To **download the required resources** run:
 ```bash
 dvc pull
 ```
 
-2.2 To **execute the pipelines** with DVC run:
+### 2.2 To **execute the pipelines** with DVC run:
 ```bash
 dvc repro
 ```
+It is a known issue that Goggle Drive sharing through links might cause issues with DVC: https://dvc.org/doc/user-guide/data-management/remote-storage/google-drive#url-format.
 
-2.3 To run experiments with DVC:
+If experiencing errors accessing the remote, you can request direct access by sending us your gmail address at `daniela.toader07@gmail.com`.
+
+### 2.3 To run experiments with DVC:
 
 If you want to **save the results as an experiment** run:
 ```bash
