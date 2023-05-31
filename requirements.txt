@@ -1,5 +1,13 @@
+# local package
+-e .
+
 joblib==1.2.0
 nltk==3.7
 numpy==1.23.3
 pandas==2.0.0
 scikit_learn==1.1.3
+dvc
+pylint
+dvc-gdrive
+mllint
+dslinter
