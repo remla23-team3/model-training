@@ -4,6 +4,7 @@ stages:
     deps:
     - data/raw/restaurant_reviews_with_rating.tsv
     - src/preprocess.py
+    - src/data/preprocess.py
     outs:
     - data/processed/c1_BoW_Sentiment_Model.pkl
     - data/processed/preprocessed_data_training
@@ -11,6 +12,7 @@ stages:
     cmd: python3 src/train.py
     deps:
     - src/train.py
+    - src/models/train_model.py
     outs:
     - data/processed/c2_Classifier_Sentiment_Model
     metrics:
