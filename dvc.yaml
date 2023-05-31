@@ -1,13 +1,16 @@
 stages:
   preprocess:
-    cmd: python3 model_training/preprocessing.py
+    cmd: python3 src/preprocess.py
     deps:
-    - model_training/preprocessing.py
+    - src/preprocess.py
     outs:
-    - model_training/c1_BoW_Sentiment_Model.pkl
+    - data/processed/c1_BoW_Sentiment_Model.pkl
   train:
-    cmd: python3 model_training/training.py
+    cmd: python3 src/train.py
     deps:
-    - model_training/training.py
+    - src/train.py
     outs:
-    - model_training/c2_Classifier_Sentiment_Model
+    - data/processed/c2_Classifier_Sentiment_Model
+    metrics:
+    - src/metrics/metrics.json:
+        cache: false
