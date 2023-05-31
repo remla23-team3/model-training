@@ -1,5 +1,6 @@
 import json
 import os
+import pickle
 import joblib
 from joblib import load
 from sklearn.model_selection import train_test_split
@@ -26,7 +27,10 @@ def train():
         Models are stored remotely using dvc.
     """
     _, dataset = load_dataset('data/raw/restaurant_reviews_with_rating.tsv')
-    X = load('data/processed/preprocessed_data_training.joblib')
+
+    with open('data/processed/preprocessed_data_training', 'rb') as file:
+        X = pickle.load(file)
+
     y = dataset.iloc[:, -1].values
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
@@ -39,10 +43,7 @@ def train():
     precision = precision_score(y_test, y_test_prediction)
     recall = recall_score(y_test, y_test_prediction)
 
-    if not os.path.exists('src/metrics'):
-        os.makedirs('src/metrics')
-
-    with open('data.json', 'w', encoding='utf-8') as file:
+    with open('src/metrics.json', 'w', encoding='utf-8') as file:
         json.dump(
             {
                 "train": {

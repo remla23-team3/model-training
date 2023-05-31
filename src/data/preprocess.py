@@ -57,4 +57,5 @@ def preprocess_data(file_name):
     with open('data/processed/c1_BoW_Sentiment_Model.pkl', 'wb') as file:
         pickle.dump(count_vectorizer, file)
 
-    dump(X, 'data/processed/preprocessed_data_training.joblib')
+    with open('data/processed/preprocessed_data_training', 'wb') as file:
+        pickle.dump(X, file)

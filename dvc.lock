@@ -3,13 +3,19 @@ stages:
   preprocess:
     cmd: python3 src/preprocess.py
     deps:
+    - path: data/raw/restaurant_reviews_with_rating.tsv
+      md5: 102f1f4193e0bdebdd6cce7f13e0a839
+      size: 54686
     - path: src/preprocess.py
       md5: 5122c773c00b02b34cde0d20a358f83d
       size: 139
     outs:
     - path: data/processed/c1_BoW_Sentiment_Model.pkl
-      md5: af0bcc756ac64b11c5848df6fe05daa6
+      md5: 1d005e53a6df4d10980a81dc2ae31411
       size: 39826
+    - path: data/processed/preprocessed_data_training
+      md5: beadf82af4f6aab7052f62bf666fd1d9
+      size: 10224163
   train:
     cmd: python3 src/train.py
     deps:
@@ -18,8 +24,8 @@ stages:
       size: 77
     outs:
     - path: data/processed/c2_Classifier_Sentiment_Model
-      md5: dc7895aea5b7623a2f38a52db50a8ace
+      md5: ddfb09c003bcc27f720950c45c5f480f
       size: 46215
-    - path: src/metrics/metrics.json
-      md5: cb57270e1358aa2598f99d779625b50f
-      size: 138
+    - path: src/metrics.json
+      md5: 4808262c04c13dc66177953ac7bd35ef
+      size: 182
