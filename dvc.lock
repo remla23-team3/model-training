@@ -7,14 +7,14 @@ stages:
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
       size: 54686
     - path: src/data/preprocess.py
-      md5: 37c3e731fc2739e0c607e2d9acbac771
-      size: 1799
+      md5: 76e3a5ff5d9e5e136deebb260c82798c
+      size: 1775
     - path: src/preprocess.py
       md5: 5122c773c00b02b34cde0d20a358f83d
       size: 139
     outs:
     - path: data/processed/c1_BoW_Sentiment_Model.pkl
-      md5: b20425f34de3bde06cf964a0627eebb3
+      md5: 63616a5a52cb3097c0818014d4411800
       size: 39826
     - path: data/processed/preprocessed_data_training
       md5: beadf82af4f6aab7052f62bf666fd1d9
@@ -23,15 +23,15 @@ stages:
     cmd: python3 src/train.py
     deps:
     - path: src/models/train_model.py
-      md5: f587b8d5fa6393edebe2306a81ec4e85
-      size: 1852
+      md5: 551dc9d219bc0ef67896bf8834bf4a2c
+      size: 1727
     - path: src/train.py
       md5: 96e64a4bbe9d6446a7700bf351484f38
       size: 77
     outs:
     - path: data/processed/c2_Classifier_Sentiment_Model
-      md5: 9d7f89e4457cf8ae9402da8a5b685814
-      size: 8208568
+      md5: 92e839d6a2b7e857bef8d8511279451b
+      size: 46215
     - path: src/metrics.json
-      md5: bad4e196c6ee4540121262789f09d7d8
-      size: 183
+      md5: 847190da0d8481e9dffd7edbdc041408
+      size: 182
