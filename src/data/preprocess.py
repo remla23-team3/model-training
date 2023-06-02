@@ -6,6 +6,9 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
 
+nltk.download('stopwords')
+all_stopwords = stopwords.words('english')
+all_stopwords.remove('not')
 
 def load_dataset(file_name):
     """
@@ -15,7 +18,7 @@ def load_dataset(file_name):
         [['Review', 'Liked']]
     return len(dataset), dataset
 
-def clean_review(review, all_stopwords):
+def clean_review(review):
     """
         Cleans up reviews by removing the stopwords.
     """
@@ -33,14 +36,9 @@ def review_preprocess(dataset, number_lines):
         Preprocesses the English reviews by removing the stopwords and negations.
     """
 
-    nltk.download('stopwords')
-
-    all_stopwords = stopwords.words('english')
-    all_stopwords.remove('not')
-
     corpus = []
     for i in range(0, number_lines):
-        corpus.append(clean_review(dataset['Review'][i], all_stopwords))
+        corpus.append(clean_review(dataset['Review'][i]))
     return corpus
 
 
