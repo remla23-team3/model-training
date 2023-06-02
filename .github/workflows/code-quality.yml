@@ -31,4 +31,9 @@ jobs:
           name: mllint-report
           path: report.md
       - name: Run Tests
-        run: python -m pytest 
+        run: coverage run --source=src -m pytest -v tests && coverage html && coverage report -m
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: htmlcov
