@@ -1,4 +1,7 @@
+import json
+
 from src.data.preprocess import clean_review, preprocess_data
+from src.models.train_model import train
 
 def test_clean_review():
     reviews_and_cleaned = {
@@ -11,3 +14,16 @@ def test_clean_review():
 
     for review, cleaned_review in reviews_and_cleaned.items():
         assert clean_review(review) == cleaned_review
+
+def test_nondeterminism_robustness():
+    "Model Validation test"
+    with open('src/metrics.json', 'r') as file:
+        metrics = json.load(file)
+
+    original_accuracy = metrics["train"]["accuracy"]
+
+    for seed in [1,2,3,40,50,100]:
+        accuracy_new_seed, _, _, _ = train(seed)
+        print(f"Accuracy with seed {seed} " + str(accuracy_new_seed), seed)
+        print("Original accuracy " + str(original_accuracy))
+        assert abs(original_accuracy - accuracy_new_seed) <= 0.15
