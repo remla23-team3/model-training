@@ -11,3 +11,5 @@ pylint
 dvc-gdrive
 mllint
 dslinter
+pytest
+pytest-cov
