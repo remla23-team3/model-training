@@ -1,4 +1,4 @@
 [core]
     remote = model-training-remote
 ['remote "model-training-remote"']
-    url = https://drive.google.com/drive/folders/1PJYtpCMCPYEyrBhPkDDb751ATbIDoIPL?usp=sharing
+    url = gdrive://1PJYtpCMCPYEyrBhPkDDb751ATbIDoIPL
