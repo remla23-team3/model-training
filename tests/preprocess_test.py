@@ -39,20 +39,20 @@ def test_nondeterminism_robustness():
 
 @pytest.fixture()
 def trained_classifier():
-    train()
+    # train()
 
-    trained_classifier = joblib.load('data/processed/c2_Classifier_Sentiment_Model')
+    trained_classifier = joblib.load('tests_data/c2_Classifier_Sentiment_Model')
     yield trained_classifier
 
 
 @pytest.fixture()
 def dataset_with_labels():
-    _, dataset_with_labels = load_dataset('data/raw/restaurant_reviews_with_rating.tsv')
+    _, dataset_with_labels = load_dataset('tests_data/restaurant_reviews_with_rating.tsv')
     yield dataset_with_labels
 
 @pytest.fixture()
 def preprocessed_data(dataset_with_labels):
-    with open('data/processed/preprocessed_data_training', 'rb') as file:
+    with open('tests_data/preprocessed_data_training', 'rb') as file:
         preprocessed_data = pickle.load(file)
 
     yield preprocessed_data
@@ -63,7 +63,7 @@ def test_data_slice(trained_classifier, dataset_with_labels, preprocessed_data):
     y = dataset_with_labels.iloc[:, -1].values
     _, X_test_data, _, y_test_data = train_test_split(preprocessed_data, y, test_size=0.2, random_state=42)
 
-    with open('data/processed/c1_BoW_Sentiment_Model.pkl', 'rb') as f:
+    with open('tests_data/c1_BoW_Sentiment_Model.pkl', 'rb') as f:
         cv = pickle.load(f)
 
     original_score, _, _, _ = evaluate_score(trained_classifier, X_test_data, y_test_data)
