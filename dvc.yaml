@@ -11,6 +11,8 @@ stages:
   train:
     cmd: python3 src/train.py
     deps:
+    - data/raw/restaurant_reviews_with_rating.tsv
+    - data/processed/preprocessed_data_training
     - src/train.py
     - src/models/train_model.py
     outs:

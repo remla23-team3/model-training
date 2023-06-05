@@ -1,7 +1,7 @@
 import pickle
 import joblib
 
-from data.preprocess import load_dataset, review_preprocess
+from src.data.preprocess import load_dataset, review_preprocess
 
 cvFile = 'data/processed/c1_BoW_Sentiment_Model.pkl'
 resources_dir_class = 'data/processed/c2_Classifier_Sentiment_Model'
@@ -15,7 +15,7 @@ def predict_dataset(classifier, cv):
 
     dataset['predicted_label'] = y_pred.tolist()
 
-    output_name = 'data/processed/c3_Predicted_Sentiments_Fresh_Dump.tsv'
+    output_name = 'data/processed/c3_preprocessed_no_rated_data.tsv'
     dataset.to_csv(output_name, sep='\t', encoding='UTF-8', index=False)
 
 
