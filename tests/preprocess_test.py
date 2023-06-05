@@ -1,4 +1,6 @@
 import json
+
+from src.models.train_model import train
 from src.data.preprocess import clean_review, preprocess_data, load_dataset, review_preprocess
 from src.models.train_model import train, evaluate_score
 import pytest
@@ -37,6 +39,8 @@ def test_nondeterminism_robustness():
 
 @pytest.fixture()
 def trained_classifier():
+    train()
+
     trained_classifier = joblib.load('data/processed/c2_Classifier_Sentiment_Model')
     yield trained_classifier
 
