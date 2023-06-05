@@ -51,21 +51,29 @@ See the differences with:
 dvc metrics diff
 ```
 
-## 3. Handling errors
-### 3.1 If encountering an **error** similar to:
+## 3. ML testing
+To test using pytest, from the *virtual environment with the installed requirements* run:
+```bash
+pytest
+```
+
+## 4. Handling errors
+### 4.1 **If encountering an error similar to:**
 ```bash
 KeyError: "None of [Index(['Review', 'Liked'], dtype='object')] are in the [columns]"
 ```
 
-### **and/or pulling the dataset with dvc fails**,
-this means that the intput data is not correct. This might happen if the dvc commands fail to fetch it correctly. In this case, you can delete the `.dvc/cache` and `data/processed` folders and try following the steps in `2.2` again.
+### **and/or pulling the datasets with dvc fails:**
+This means that the intput data is not correct. This might happen if the dvc commands fail to fetch it correctly. In this case, you can delete the `.dvc/cache`, the `data/processed` folder and the `.tsv` files from the`data/raw` folder and try following the steps in `2.2` again.
 
 
-### 3.2 If **pulling the dataset with dvc fails and deleting the `.dvc/cache` and `data/processed` folders does not work**,
-please copy the `restaurant_reviews_with_rating.tsv` and `restaurant_reviews_without_rating.tsv` located in the `data/backup` folder and add them to the `data/raw` folder. If the `.tsv` files are already there, please overwrite them. Delete the `.dvc/cache` and `data/processed` folders as well to make sure incorrect input data does not get retrieved from the cache and that incorrectly preprocessed data does not get used.
+### 4.2 **If pulling the datasets with dvc fails and deleting the *.dvc/cache* and *data/processed* folders does not work:**
 
+- 4.2.1: Copy the `restaurant_reviews_with_rating.tsv` and `restaurant_reviews_without_rating.tsv` located in the `data/backup` folder and add them to the `data/raw` folder. If the `.tsv` files are already there, please overwrite them.
 
-You can then try running the commands starting from `2.2.2`.
+- 4.2.2: Delete the `.dvc/cache` and `data/processed` folders as well to make sure incorrect input data does not get retrieved from the cache and that incorrectly preprocessed data does not get used. 
 
-### 3.3 **If all fails**,
-please copy the files as described in `3.2` and delete `data/processed` and instead of running the pipelines using dvc, run them as described in `2.1`.
+- 4.2.3 You can then try running the commands starting from `2.2.2`.
+
+### 4.3 **If all fails:**
+Repeat `4.2.1` and `4.2.2` and instead of running the pipelines using dvc, run them as described in `2.1`.
