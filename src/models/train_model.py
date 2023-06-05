@@ -18,7 +18,7 @@ def train_model(X_train, y_train):
     return classifier
 
 
-def train(random_state=42):
+def train(state=42):
     """
         Model training function.
         Loads the dataset, trains the model and stores it.
@@ -31,7 +31,7 @@ def train(random_state=42):
 
     y = dataset.iloc[:, -1].values
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=random_state)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=state)
 
     classifier = train_model(X_train, y_train)
 
