@@ -14,7 +14,7 @@ stages:
       size: 139
     outs:
     - path: data/processed/c1_BoW_Sentiment_Model.pkl
-      md5: 63616a5a52cb3097c0818014d4411800
+      md5: 20c7ce1304ceb6b86ef29535b8fa7837
       size: 39826
     - path: data/processed/preprocessed_data_training
       md5: beadf82af4f6aab7052f62bf666fd1d9
@@ -22,6 +22,12 @@ stages:
   train:
     cmd: python3 src/train.py
     deps:
+    - path: data/processed/preprocessed_data_training
+      md5: beadf82af4f6aab7052f62bf666fd1d9
+      size: 10224163
+    - path: data/raw/restaurant_reviews_with_rating.tsv
+      md5: 102f1f4193e0bdebdd6cce7f13e0a839
+      size: 54686
     - path: src/models/train_model.py
       md5: 551dc9d219bc0ef67896bf8834bf4a2c
       size: 1727
