@@ -19,7 +19,7 @@ def train_model(X_train, y_train):
 
 
 def train(random_state=42):
- """
+    """
         Model training function.
         Loads the dataset, trains the model and stores it.
         Models are stored remotely using dvc.
