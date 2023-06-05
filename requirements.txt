@@ -13,3 +13,4 @@ mllint
 dslinter
 pytest
 pytest-cov
+scipy
