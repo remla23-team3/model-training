@@ -19,7 +19,7 @@ def train_model(X_train, y_train):
 
 
 def train(random_state=42):
-    """
+ """
         Model training function.
         Loads the dataset, trains the model and stores it.
         Models are stored remotely using dvc.
@@ -35,7 +35,12 @@ def train(random_state=42):
 
     classifier = train_model(X_train, y_train)
 
+    return evaluate_score(classifier, X_test, y_test)
+
+
+def evaluate_score(classifier, X_test, y_test):
     y_test_prediction = classifier.predict(X_test)
+
     accuracy = accuracy_score(y_test, y_test_prediction)
     f1 = f1_score(y_test, y_test_prediction)
     precision = precision_score(y_test, y_test_prediction)

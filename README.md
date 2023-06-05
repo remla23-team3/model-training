@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/remla23-team3/model-training/badge.svg)](https://coveralls.io/github/remla23-team3/model-training)
+
 # Model-training
 
 ## 1. Installing the requirements
