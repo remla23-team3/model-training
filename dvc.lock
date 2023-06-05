@@ -14,7 +14,7 @@ stages:
       size: 139
     outs:
     - path: data/processed/c1_BoW_Sentiment_Model.pkl
-      md5: 13653cd199811e489a1bc60d8743ed9c
+      md5: 20c7ce1304ceb6b86ef29535b8fa7837
       size: 39826
     - path: data/processed/preprocessed_data_training
       md5: beadf82af4f6aab7052f62bf666fd1d9
