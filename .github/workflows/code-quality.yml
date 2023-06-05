@@ -37,3 +37,5 @@ jobs:
         with:
           name: coverage-report
           path: htmlcov
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
