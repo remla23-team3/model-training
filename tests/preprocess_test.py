@@ -30,7 +30,7 @@ def test_nondeterminism_robustness():
     original_accuracy = metrics["train"]["accuracy"]
 
     for seed in [1,2,3,40,50,100]:
-        accuracy_new_seed, _, _, _ = train(seed)
+        accuracy_new_seed, _, _, _ = train(seed, True)
         print(f"Accuracy with seed {seed} " + str(accuracy_new_seed), seed)
         print("Original accuracy " + str(original_accuracy))
 

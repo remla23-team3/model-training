@@ -18,16 +18,20 @@ def train_model(X_train, y_train):
     return classifier
 
 
-def train(state=42):
+def train(state=42, test = False):
     """
         Model training function.
         Loads the dataset, trains the model and stores it.
         Models are stored remotely using dvc.
     """
-    _, dataset = load_dataset('data/raw/restaurant_reviews_with_rating.tsv')
-
-    with open('data/processed/preprocessed_data_training', 'rb') as file:
-        X = pickle.load(file)
+    if test:
+        _, dataset = load_dataset('tests_data/restaurant_reviews_with_rating.tsv')
+        with open('tests_data/preprocessed_data_training', 'rb') as file:
+            X = pickle.load(file)
+    else:
+        _, dataset = load_dataset('data/raw/restaurant_reviews_with_rating.tsv')
+        with open('data/processed/preprocessed_data_training', 'rb') as file:
+            X = pickle.load(file)
 
     y = dataset.iloc[:, -1].values
 
