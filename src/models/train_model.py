@@ -4,14 +4,6 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
-import sys
-from pprint import pprint
-import os
-
-current_directory = os.getcwd()
-print(current_directory)
-sys.path.append(current_directory)
-pprint(sys.path)
 from src.data.preprocess import load_dataset
 
 def train_model(X_train, y_train):
