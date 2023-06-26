@@ -11,12 +11,12 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 #pylint: disable=wrong-import-position
 
 current_directory = os.getcwd()
-print(current_directory)
 sys.path.append(current_directory)
-pprint(sys.path)
+
 from src.data.preprocess import load_dataset
 
 #pylint: enable=wrong-import-position
+
 def train_model(X_train, y_train):
     """
         Fits the model using the training set.
