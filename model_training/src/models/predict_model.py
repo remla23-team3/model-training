@@ -1,8 +1,9 @@
+import json
 import os
 import sys
 import pickle
 import joblib
-import json
+
 
 from model_training.src.data.preprocess import load_dataset, review_preprocess
 
