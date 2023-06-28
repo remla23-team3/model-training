@@ -2,7 +2,6 @@ import json
 import pickle
 import os
 import sys
-from pprint import pprint
 import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
