@@ -1,7 +1,6 @@
 import json
 
-from src.models.train_model import train
-from src.data.preprocess import clean_review, preprocess_data, load_dataset, review_preprocess
+from src.data.preprocess import clean_review, load_dataset, review_preprocess
 from src.models.train_model import train, evaluate_score
 import pytest
 import pickle

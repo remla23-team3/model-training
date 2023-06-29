@@ -1,43 +1,53 @@
 schema: '2.0'
 stages:
   preprocess:
-    cmd: python3 src/preprocess.py
+    cmd: python src/preprocess.py
     deps:
     - path: data/raw/restaurant_reviews_with_rating.tsv
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
-      size: 54686
+      size: 55587
     - path: src/data/preprocess.py
       md5: 63a5c4270cfb01059160de869bbf2a1a
-      size: 1731
+      size: 1790
     - path: src/preprocess.py
       md5: 5122c773c00b02b34cde0d20a358f83d
-      size: 139
+      size: 143
     outs:
     - path: data/processed/c1_BoW_Sentiment_Model.pkl
-      md5: 20c7ce1304ceb6b86ef29535b8fa7837
-      size: 39826
+      md5: 76b7f9e5e56eb1fbb55c3b4ec7bc0736
+      size: 34146
     - path: data/processed/preprocessed_data_training
       md5: beadf82af4f6aab7052f62bf666fd1d9
       size: 10224163
   train:
-    cmd: python3 src/train.py
+    cmd: python src/train.py
     deps:
     - path: data/processed/preprocessed_data_training
       md5: beadf82af4f6aab7052f62bf666fd1d9
       size: 10224163
     - path: data/raw/restaurant_reviews_with_rating.tsv
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
-      size: 54686
+      size: 55587
     - path: src/models/train_model.py
-      md5: 6338ed7e2b5c3e23eabe3a12f82330b3
-      size: 2191
+      md5: 05f390df7ca9528208ccec144b804d75
+      size: 2467
     - path: src/train.py
       md5: 17a0c3a1bf411fbe843b324e6d5366a3
-      size: 175
+      size: 180
     outs:
     - path: data/processed/c2_Classifier_Sentiment_Model
-      md5: 92e839d6a2b7e857bef8d8511279451b
+      md5: c61cbc4c40467dd181ddad9dca99be33
       size: 46215
     - path: src/metrics.json
       md5: 847190da0d8481e9dffd7edbdc041408
-      size: 182
+      size: 189
+  get_data:
+    cmd: python src/get_data.py
+    deps:
+    - path: src/get_data.py
+      md5: 3efe1f71380f10dacdbc41da586251aa
+      size: 366
+    outs:
+    - path: data/raw/restaurant_reviews_with_rating.tsv
+      md5: 102f1f4193e0bdebdd6cce7f13e0a839
+      size: 55587

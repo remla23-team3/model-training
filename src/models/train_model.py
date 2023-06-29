@@ -1,10 +1,20 @@
 import json
 import pickle
+import os
+import sys
 import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+
+#pylint: disable=wrong-import-position
+
+current_directory = os.getcwd()
+sys.path.append(current_directory)
+
 from src.data.preprocess import load_dataset
+
+#pylint: enable=wrong-import-position
 
 def train_model(X_train, y_train):
     """

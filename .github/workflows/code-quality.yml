@@ -13,6 +13,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
+      - name: Get data
+        run: python src/get_data.py
+      - name: Run DVC repro
+        run: dvc repro
       - name: Lint with pylint
         run: pylint --fail-under=10.0 src/**/*.py
       - name: Lint with dslinter
