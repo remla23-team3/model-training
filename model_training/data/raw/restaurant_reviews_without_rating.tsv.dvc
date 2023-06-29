@@ -1,4 +1,0 @@
-outs:
-- md5: 097c8b95f6b255e5a6a06b29d61fef8e
-  size: 6504
-  path: restaurant_reviews_without_rating.tsv
