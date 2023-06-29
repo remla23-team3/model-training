@@ -33,9 +33,9 @@ def predict_dataset():
     dataset.to_csv(output_name, sep='\t', encoding='UTF-8', index=False)
 
 
-def predict_single(review) -> str:
-    processed_input = cv.transform([review]).toarray()[0]
-    prediction = classifier.predict([processed_input])[0]
+def predict_single(review, classifier__service, cv_service) -> str:
+    processed_input = cv_service.transform([review]).toarray()[0]
+    prediction = classifier__service.predict([processed_input])[0]
 
     prediction_map = {
         0: 'negative',
@@ -49,6 +49,6 @@ def predict_single(review) -> str:
 def predict():
 
     review = input('Give me an input to perform a sentiment analysis.\n>')
-    predict_single(review)
+    predict_single(review, classifier, cv)
 
     predict_dataset()
