@@ -14,12 +14,8 @@ sys.path.append(path2)
 cvFile = path2 + r'\model_training\data\processed\c1_BoW_Sentiment_Model.pkl'
 resources_dir_class = path2 + r'\model_training\data\processed\c2_Classifier_Sentiment_Model'
 
-with open(cvFile, 'rb') as f:
-    cv = pickle.load(f)
 
-classifier = joblib.load(resources_dir_class)
-
-def predict_dataset():
+def predict_dataset(classifier, cv):
     number_lines, dataset = load_dataset('model_training/data/'+
                                          'raw/restaurant_reviews_without_rating.tsv')
     corpus = review_preprocess(dataset, number_lines)
@@ -47,8 +43,12 @@ def predict_single(review, classifier__service, cv_service) -> str:
 
 
 def predict():
+    with open(cvFile, 'rb') as f:
+        cv = pickle.load(f)
+
+    classifier = joblib.load(resources_dir_class)
 
     review = input('Give me an input to perform a sentiment analysis.\n>')
     predict_single(review, classifier, cv)
 
-    predict_dataset()
+    predict_dataset(classifier, cv)
