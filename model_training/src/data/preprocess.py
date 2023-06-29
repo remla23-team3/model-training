@@ -52,8 +52,8 @@ def preprocess_data(file_name):
     count_vectorizer = CountVectorizer(max_features=1420)
     X = count_vectorizer.fit_transform(corpus).toarray()
 
-    with open('data/processed/c1_BoW_Sentiment_Model.pkl', 'wb') as file:
+    with open('model_training/data/processed/c1_BoW_Sentiment_Model.pkl', 'wb') as file:
         pickle.dump(count_vectorizer, file)
 
-    with open('data/processed/preprocessed_data_training', 'wb') as file:
+    with open('model_training/data/processed/preprocessed_data_training', 'wb') as file:
         pickle.dump(X, file)

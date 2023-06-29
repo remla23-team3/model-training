@@ -1,7 +1,7 @@
 import json
 
-from src.data.preprocess import clean_review, load_dataset, review_preprocess
-from src.models.train_model import train, evaluate_score
+from model_training.src.data.preprocess import clean_review, load_dataset, review_preprocess
+from model_training.src.models.train_model import train, evaluate_score
 import pytest
 import pickle
 import joblib
@@ -23,7 +23,7 @@ def test_clean_review():
 
 def test_nondeterminism_robustness():
     "Model Validation test"
-    with open('src/metrics.json', 'r') as file:
+    with open('model_training/src/metrics.json', 'r') as file:
         metrics = json.load(file)
 
     original_accuracy = metrics["train"]["accuracy"]

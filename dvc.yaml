@@ -1,28 +1,28 @@
 stages:
   get_data:
-    cmd: python src/get_data.py
+    cmd: python model_training/src/get_data.py
     deps:
-    - src/get_data.py
+    - model_training/src/get_data.py
     outs:
-    - data/raw/restaurant_reviews_with_rating.tsv
+    - model_training/data/raw/restaurant_reviews_with_rating.tsv
   preprocess:
-    cmd: python src/preprocess.py
+    cmd: python model_training/src/preprocess.py
     deps:
-    - data/raw/restaurant_reviews_with_rating.tsv
-    - src/preprocess.py
-    - src/data/preprocess.py
+    - model_training/data/raw/restaurant_reviews_with_rating.tsv
+    - model_training/src/preprocess.py
+    - model_training/src/data/preprocess.py
     outs:
-    - data/processed/c1_BoW_Sentiment_Model.pkl
-    - data/processed/preprocessed_data_training
+    - model_training/data/processed/c1_BoW_Sentiment_Model.pkl
+    - model_training/data/processed/preprocessed_data_training
   train:
-    cmd: python src/train.py
+    cmd: python model_training/src/train.py
     deps:
-    - data/raw/restaurant_reviews_with_rating.tsv
-    - data/processed/preprocessed_data_training
-    - src/train.py
-    - src/models/train_model.py
+    - model_training/data/raw/restaurant_reviews_with_rating.tsv
+    - model_training/data/processed/preprocessed_data_training
+    - model_training/src/train.py
+    - model_training/src/models/train_model.py
     outs:
-    - data/processed/c2_Classifier_Sentiment_Model
+    - model_training/data/processed/c2_Classifier_Sentiment_Model
     metrics:
-    - src/metrics.json:
+    - model_training/src/metrics.json:
         cache: false

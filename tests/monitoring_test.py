@@ -1,14 +1,9 @@
-import json
-
 import numpy as np
 
-from src.models.train_model import train
-from src.data.preprocess import clean_review, preprocess_data, load_dataset, review_preprocess
-from src.models.train_model import train, evaluate_score
+from model_training.src.data.preprocess import load_dataset
 from scipy.stats import ks_2samp
 import pytest
 import pickle
-import joblib
 from sklearn.model_selection import train_test_split
 
 @pytest.fixture()

@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 current_directory = os.getcwd()
 sys.path.append(current_directory)
 
-from src.data.preprocess import load_dataset
+from model_training.src.data.preprocess import load_dataset
 
 #pylint: enable=wrong-import-position
 
@@ -23,7 +23,7 @@ def train_model(X_train, y_train):
     classifier = GaussianNB()
     classifier.fit(X_train, y_train)
 
-    joblib.dump(classifier, 'data/processed/c2_Classifier_Sentiment_Model')
+    joblib.dump(classifier, 'model_training/data/processed/c2_Classifier_Sentiment_Model')
 
     return classifier
 
@@ -39,8 +39,8 @@ def train(state=42, test = False):
         with open('tests_data/preprocessed_data_training', 'rb') as file:
             X = pickle.load(file)
     else:
-        _, dataset = load_dataset('data/raw/restaurant_reviews_with_rating.tsv')
-        with open('data/processed/preprocessed_data_training', 'rb') as file:
+        _, dataset = load_dataset('model_training/data/raw/restaurant_reviews_with_rating.tsv')
+        with open('model_training/data/processed/preprocessed_data_training', 'rb') as file:
             X = pickle.load(file)
 
     y = dataset.iloc[:, -1].values
@@ -65,7 +65,7 @@ def evaluate_score(classifier, X_test, y_test):
 
 def save_metrics(accuracy, f1, precision, recall):
 
-    with open('src/metrics.json', 'w', encoding='utf-8') as file:
+    with open('model_training/src/metrics.json', 'w', encoding='utf-8') as file:
         json.dump(
             {
                 "train": {
